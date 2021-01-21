@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
             @user.save
 
             payload = { user_id: @user.id }
-            token = JWT.endcode(payload, 'secret')
+            token = JWT.encode(payload, 'secret')
 
             render json: { auth_key: token }, status: :created
         else

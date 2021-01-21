@@ -25,7 +25,9 @@ class Api::V1::OrderProductsController < ApplicationController
         order_product = OrderProduct.find_by(id: params[:id])
         order_product.update(order_product_params)
 
-        render json: order_product
+        if order_product.save
+            render json: order_product
+        end
     end
 
     def destroy
